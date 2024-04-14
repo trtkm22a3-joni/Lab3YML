@@ -1,0 +1,16 @@
+# Comment on when an users opens the first pull request
+name: Greet when a user
+on: 
+  pull_request:
+    types:
+      - opened
+jobs:
+  greeting: 
+    runs-on: ubuntu-latest # This job will run on the latest version of Ubuntu.
+    permissions:
+      pull-requests: write
+    steps: # The "steps" section contains the individual tasks that will be performed in this job.
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-message: "Thanks for the first Puil Request"
